@@ -1,0 +1,16 @@
+﻿<div class="container">
+    <header>
+        <h3>Upload Data</h3>
+    </header>
+    <div ng-controller="DataUploadController" class="container">
+        <h3>Select text file</h3>
+        <input type="file" on-read-file="showContent($fileContent)" />
+        <!-- <div ng-if="content">
+            <h2>File content is:</h2>
+            <pre>{{ content }}</pre>
+        </div> -->
+        <div style="padding:10px 0px 10px 0px">
+            <div class="gridStyle" ng-grid="UDgridOptions"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿<div ng-controller="TemplateController" class="AddModTemplate nav">
+    <div class="container">
+        <header>
+            <h3>Add/Modify Template</h3>
+        </header>
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+        <!-- <div>
+        {{DataTypes[1].Name}}
+        <ul>
+          <li ng-repeat="d in DataTypes">
+          {{d.Name}}
+        </ul>
+        </div> -->
+        <div style="padding-top:5px">
+            <button ng-click='addTemplateDetails();'>Add</button>
+            <button ng-click='RemoveTemplateDetails();'>Remove</button>
+            <button ng-click='Save()'>Save</button>
+        </div>
+    </div>
+</div>
+
+
+<!--http://jsfiddle.net/knvzk/10/-->

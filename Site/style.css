@@ -1,0 +1,15 @@
+/* Styles go here */
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 800px; 
+    height: 400px
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
