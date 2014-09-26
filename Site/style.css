@@ -13,3 +13,7 @@
     text-align: center;
     margin: auto;
 }
+@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css');
+body { 
+    padding-top: 10px; 
+}

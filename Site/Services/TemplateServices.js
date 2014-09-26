@@ -12,11 +12,11 @@ this.getTemplates = function(){
   return templates;
 };
 
-this.getTemplateDetails = function(){
+/*this.getTemplateDetails = function(){
   cnt++;
   templateDetails.push(tmp());
   return templateDetails;
-};
+};*/
 
 this.getTemplateDetailsNewRow = function(){
   cnt++;
@@ -44,7 +44,7 @@ var boolVal         = [{Id:1, Name:'True'}, {Id:2, Name:'false'}];
 
 //Dynamic code
 var templates       = [{Id:1, Name:'Default', TableName:'', Status:1, UpdateFrequency:1, CreatedBy:1, CreatedOn:'15 Sep 2014'}];
-var templateDetails = [];//[{Id:1, FieldName:'Field1', FieldType:1, FieldSize:10, FieldValidations:'', Nullable:true, IsPrimaryKey:false }];
+//var templateDetails = [];//[{Id:1, FieldName:'Field1', FieldType:1, FieldSize:10, FieldValidations:'', Nullable:true, IsPrimaryKey:false }];
 
 var cnt = 0;
 //TemplateDetails sample

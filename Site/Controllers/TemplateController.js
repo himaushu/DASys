@@ -4,7 +4,7 @@ app.controller('TemplateController', function($scope, TemplateService ){
  $scope.Templates       = TemplateService.getTemplates();
  $scope.UpdateFrequency = TemplateService.getUpdateFrequency();
  $scope.DataTypes       = TemplateService.getDataTypes();
- $scope.TemplateDetails = TemplateService.getTemplateDetails();
+ $scope.TemplateDetails = [];//TemplateService.getTemplateDetails();
  $scope.SelectedRows    = [];
  
  //Column Templates
@@ -13,9 +13,18 @@ app.controller('TemplateController', function($scope, TemplateService ){
  $scope.cellNumberInputEditableTemplate = '<input type="number" ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';  
  $scope.cellSelectEditableTemplateB     = '<input type="checkbox"  ng-class="\'colt\' + col.index" ng-checked="row.entity.Nullable" ng-input="COL_FIELD" step="1"  /></div>';// '<input type="checkbox" ng-model="COL_FIELD"  grid-cell-checkbox="COL_FIELD"/>';//
  
-   $scope.cellTemplate = "<div ng-class=\"'ngCellText colt' + $index\"> <span ng-cell-text>{{COL_FIELD}}</span></div>";
-    $scope.cellEditTemplate = '<input type="checkbox" ng-checked="row.entity.Nullable==\'on\'" ng-input="COL_FIELD" /></div>';
+ $scope.cellTemplate = "<div ng-class=\"'ngCellText colt' + $index\"> <span ng-cell-text>{{COL_FIELD}}</span></div>";
+ $scope.cellEditTemplate = '<input type="checkbox" ng-checked="row.entity.Nullable==\'on\'" ng-input="COL_FIELD" /></div>';
  
+ Init = function () {
+     $scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
+ };
+
+//load data on opening
+ $scope.$on('$viewContentLoaded', function () {
+     Init();
+ });
+
  $scope.addTemplateDetails = function (){
    
     $scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
@@ -71,6 +80,13 @@ $scope.Save = function () {
        //}
    });
 
+   $scope.$on('$locationChangeStart', function (event) {
+       var answer = confirm("Are you sure you want to leave this page?")
+       if (!answer) {
+           event.preventDefault();
+       }
+   });
+
 });
 
 
@@ -96,3 +112,40 @@ app.controller('NavbarController', function ($scope, $location) {
 //http://expertsoverflow.com/questions/tagged/ng-grid
 //http://www.write-less.com/search/ng-grid#jquery-feed-tab
 //http://plnkr.co/edit/mpjyAl?p=preview
+
+
+
+/* Here is the directive I use. It automatically cleans itself up when the form is unloaded. 
+If you want to prevent the prompt from firing (e.g. because you successfully saved the form), 
+call $scope.FORMNAME.$setPristine(), where FORMNAME is the name of the form you want to prevent from prompting.
+
+.directive('dirtyTracking', [function () {
+    return {
+        restrict: 'A',
+        link: function ($scope, $element, $attrs) {
+            function isDirty() {
+                var formObj = $scope[$element.attr('name')];
+                return formObj && formObj.$pristine === false;
+            }
+
+            function areYouSurePrompt() {
+                if (isDirty()) {
+                    return 'You have unsaved changes. Are you sure you want to leave this page?';
+                }
+            }
+
+            window.addEventListener('beforeunload', areYouSurePrompt);
+
+            $element.bind("$destroy", function () {
+                window.removeEventListener('beforeunload', areYouSurePrompt);
+            });
+
+            $scope.$on('$locationChangeStart', function (event) {
+                var prompt = areYouSurePrompt();
+                if (!event.defaultPrevented && prompt && !confirm(prompt)) {
+                    event.preventDefault();
+                }
+            });
+        }
+    };
+}]);*/

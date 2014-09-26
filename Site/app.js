@@ -19,5 +19,6 @@ app.config(function ($routeProvider) {
                 controller: 'DataUploadController',
                 templateUrl: 'PartialViews/DataUpload.html'
             })
-        //.otherwise({ redirectTo: '/AddModTemplate' });
+        .otherwise({ redirectTo: '/AddModTemplate' });
 });
+
