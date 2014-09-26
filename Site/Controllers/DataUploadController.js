@@ -1,9 +1,15 @@
 ﻿app.controller('DataUploadController', function ($scope, DataUploadService) {
-    $scope.TemplateInfo     = DataUploadService.GetTemplateInfo();
+    $scope.TemplateInfo     = [];
     $scope.gridOptionsInfo  = [];
     $scope.csvData          = [];
 
     var InfoLen             = $scope.TemplateInfo.length;
+
+    fetchData ();		
+
+    fetchData = function(){
+	$scope.TemplateInfo = DataUploadService.GetTemplateInfo();    	
+    }
 
     $scope.showContent = function ($fileContent) {
         $scope.content = $fileContent;
