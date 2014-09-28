@@ -65,7 +65,7 @@
             $scope.csvData.push(obj);
         }
 
-        alert(JSON.stringify($scope.csvData));
+        //alert(JSON.stringify($scope.csvData));
     };
 
 

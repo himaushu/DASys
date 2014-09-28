@@ -1,5 +1,5 @@
-app.controller('TemplateController', function($scope, TemplateService ){
-  
+app.controller('TemplateController', function ($scope, TemplateService) {
+    
  $scope.Statuses        = TemplateService.getStatuses();
  $scope.Templates       = TemplateService.getTemplates();
  $scope.UpdateFrequency = TemplateService.getUpdateFrequency();
@@ -15,7 +15,7 @@ app.controller('TemplateController', function($scope, TemplateService ){
  
  $scope.cellTemplate = "<div ng-class=\"'ngCellText colt' + $index\"> <span ng-cell-text>{{COL_FIELD}}</span></div>";
  $scope.cellEditTemplate = '<input type="checkbox" ng-checked="row.entity.Nullable==\'on\'" ng-input="COL_FIELD" /></div>';
- 
+
  Init = function () {
      $scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
  };
