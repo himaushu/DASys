@@ -18,7 +18,7 @@
 <body>
 
     <div ng-app="login_App" ng-controller="LoginController">
-        <div class="container">
+        <div class="container" >
             <div class="row">
                 <div class="col-sm-6">
                     <!-- =================================================================== -->
@@ -45,7 +45,7 @@
                                 <input type="email" name="email" class="form-control" ng-model="user.email">
                                 <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
                             </div>
-                            <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+                            <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Sign in</button>
                         </div>
 
                     </form>

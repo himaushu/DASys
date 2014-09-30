@@ -18,4 +18,17 @@
 body { 
     padding-top: 10px; 
 }
+.ngHeaderCell {
+    background-color: #d9534f !important;
+    bottom: 0;
+    color: rgb(250, 250, 250) !important;
+    position: absolute;
+    top: 0;
+}
 
+.row-even {
+    background-color:#76A0D3;
+}
+.row-odd {
+    background-color:#BDE3FB;
+}
