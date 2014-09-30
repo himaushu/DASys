@@ -8,7 +8,7 @@ loginApp.controller('LoginController', function ($scope) {
 			// check to make sure the form is completely valid
 			if ($scope.userForm.$valid) {
 			    //alert('our form is amazing');
-			    window.location = "/MainPage.html";
+			    window.location = "../MainPage.html";
 			}
 
 		};
