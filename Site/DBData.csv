@@ -3,5 +3,6 @@
 {"CustomerName":"James Bond","AcBal":" 2000","DrCrFlag":" Dr","BalDate":" 1 Jan 2014"},
 {"CustomerName":"Pramod Shukla","AcBal":" 5600","DrCrFlag":" Dr","BalDate":" 21 Sep 2014"},
 {"CustomerName":"Saniya Nehawal","AcBal":" 600","DrCrFlag":" Cr","BalDate":" 1 Aug 2014"},
-{"CustomerName":"Perter Brooks","AcBal":" 23600","DrCrFlag":" Cr","BalDate":" 22 March 2014"}
+{"CustomerName":"Perter Brooks","AcBal":" 23600","DrCrFlag":" Cr","BalDate":" 22 March 2014"},
+{"CustomerName":"Tom Cruise","AcBal":"123600","DrCrFlag":" Cr","BalDate":" 03 Oct 2014"}
 ]
