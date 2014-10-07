@@ -19,6 +19,11 @@ app.config(function ($routeProvider) {
                 controller: 'DataUploadController',
                 templateUrl: 'PartialViews/DataUpload.html'
             })
+        .when('/UserCreation',
+            {
+                controller: 'UsersController',
+                templateUrl: 'PartialViews/UserCreation.html'
+            })
         .when('/',
             {
                 //controller: 'DataUploadController',

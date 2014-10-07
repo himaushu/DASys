@@ -32,6 +32,7 @@
     <script src="Directives/DataUploadDirectives.js"></script>
     <script src="Controllers/DataUploadController.js"></script>
     <script src="Services/DataUploadService.js"></script>
+      <script src="Controllers/UsersController.js"></script>
   </head>
 
 <body>
@@ -56,7 +57,7 @@
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">Work Area<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">User Maintenance</a></li>
+                                <li class="{'active':getClass('/UserCreation')}"><a href="#/UserCreation">User Maintenance</a></li>
                                 <li class="{'active':getClass('/AddModTemplate')}"><a href="#/AddModTemplate">Templates Matenance</a></li>
                                 <li><a href="">Configration</a></li>
                                 <li class="divider"></li>
