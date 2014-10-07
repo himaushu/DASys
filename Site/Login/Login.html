@@ -4,8 +4,9 @@
 <head>
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 
-  <title>AngularJS Form Validation - CodePen</title>
+  <title>Sign in</title>
 
   <link rel="stylesheet" href="css/normalize.css">
 
@@ -19,12 +20,10 @@
 
     <div ng-app="login_App" ng-controller="LoginController">
         <div class="container" >
-            <div class="row">
-                <div class="col-sm-6">
                     <!-- =================================================================== -->
                     <!-- FORM ============================================================== -->
                     <!-- =================================================================== -->
-                    <form name="userForm" ng-submit="submitForm()" novalidate>
+                    <form class="form-signin" name="userForm" ng-submit="submitForm()" novalidate>
                         <!-- NAME
                         <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
                             <label>Name</label>
@@ -45,11 +44,10 @@
                                 <input type="email" name="email" class="form-control" ng-model="user.email">
                                 <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
                             </div>
-                            <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Sign in</button>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="userForm.$invalid">Sign in</button>
                         </div>
 
                     </form>
-                </div>
                 <!--
                 <div class="col-sm-6">
                   <!-- =================================================================== -->
@@ -125,8 +123,8 @@
 
                 </div>
                     -->
-            </div>
         </div>
+     </div>
         <script src='../Scripts/jquery-1.11.1.js'></script>
         <script src='../Scripts//angular.js'></script>
         <script src="js/LoginController.js"></script>

@@ -35,19 +35,84 @@
   </head>
 
 <body>
-    <!-- <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="brand " href="#/">
-                    <img src="Content/Images/people.png" alt="logo"> Data Assimlation System
-                </a>
-                <ul class="nav nav-pills" data-ng-controller="NavbarController">
-                    <li data-ng-class="{'active':getClass('/AddModTemplate')}"><a href="#/AddModTemplate">Templates</a></li>
-                    <li data-ng-class="{'active':getClass('/DataUpload')}"><a href="#/DataUpload">Data Upload</a></li>
-                </ul>
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">DASys</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Work Area<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">User Maintenance</a></li>
+                                <li class="{'active':getClass('/AddModTemplate')}"><a href="#/AddModTemplate">Templates Matenance</a></li>
+                                <li><a href="">Configration</a></li>
+                                <li class="divider"></li>
+                                <li class="{'active':getClass('/DataUpload')}"><a href="#/DataUpload">Upload Data</a></li>
+                                <li><a href="">View Data</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
             </div>
         </div>
-    </div> -->
+        <!-- Begin page content -->
+        <div class="container">
+            <div class="span12">
+                <div class="view" ng-view></div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted credit">Copyright @2014-2015 <a href="">MnF</a>. <a href="">Site Map</a>.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<!-- Nav bar Example - http://codepen.io/AbdiHaikal/pen/eEolt -->
+
+<!-- http://jsfiddle.net/DTcHh/198/ -->
+<!-- <nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container-fluid" id="navfluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./Index.html">Stadtfestlauf</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navigationbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="./Index.html">Startseite</a></li>
+                <li><a href="./Rueckblick.html">R&uuml;ckblick</a></li>
+                <li><a href="./Wettbewerb.html">Wettbewerb</a></li>
+                <li><a href="./anmelden.html">Anmelden</a></li>
+                <li><a href="./sponsoren.html">Sponsoren</a></li>
+            </ul>
+        </div> /.navbar-collapse 
+    </div> /.container-fluid 
+</nav> 
+    
+    
+
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -80,36 +145,6 @@
         </div>
     </nav>
     <div class="row">
-        <div class="span12">
-            <div class="view" ng-view></div>
-        </div>
-    </div>
-</body>
-
-</html>
-
-<!-- Nav bar Example - http://codepen.io/AbdiHaikal/pen/eEolt -->
-
-<!-- http://jsfiddle.net/DTcHh/198/ -->
-<!-- <nav class="navbar navbar-default navbar-inverse" role="navigation">
-    <div class="container-fluid" id="navfluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="./Index.html">Stadtfestlauf</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navigationbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="./Index.html">Startseite</a></li>
-                <li><a href="./Rueckblick.html">R&uuml;ckblick</a></li>
-                <li><a href="./Wettbewerb.html">Wettbewerb</a></li>
-                <li><a href="./anmelden.html">Anmelden</a></li>
-                <li><a href="./sponsoren.html">Sponsoren</a></li>
-            </ul>
-        </div> /.navbar-collapse 
-    </div> /.container-fluid 
-</nav> -->
+        
+    </div>    
+    -->
