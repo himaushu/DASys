@@ -21,6 +21,7 @@
       <script data-require="angular.js@1.2.x" src="Scripts/angular.js" data-semver="1.2.3"></script>
       <script type="text/javascript" src="Scripts/ng-grid.debug.js"></script>
       <script src="Scripts/angular-route.js"></script>
+      <script src="Scripts/xlsx.js"></script>
 
       <!-- UI Libs -->
       <script src="Scripts/bootstrap-3.2.0.js"></script>
@@ -32,7 +33,10 @@
     <script src="Directives/DataUploadDirectives.js"></script>
     <script src="Controllers/DataUploadController.js"></script>
     <script src="Services/DataUploadService.js"></script>
-      <script src="Controllers/UsersController.js"></script>
+    <script src="Controllers/UsersController.js"></script>
+    <script src="Services/XLSXReaderService.js"></script>	
+    <script src="Controllers/XLSXReaderController.js"></script>
+     
   </head>
 
 <body>
@@ -61,7 +65,8 @@
                                 <li class="{'active':getClass('/AddModTemplate')}"><a href="#/AddModTemplate">Templates Matenance</a></li>
                                 <li><a href="">Configration</a></li>
                                 <li class="divider"></li>
-                                <li class="{'active':getClass('/DataUpload')}"><a href="#/DataUpload">Upload Data</a></li>
+                                <li class="{'active':getClass('/DataUpload')}"><a href="#/DataUpload">Upload CSV</a></li>
+                                <li class="{'active':getClass('/UploadExcel')}"><a href="#/UploadExcel">Upload Excel</a></li>
                                 <li><a href="">View Data</a></li>
                             </ul>
                         </li>

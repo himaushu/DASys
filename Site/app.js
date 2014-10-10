@@ -24,6 +24,11 @@ app.config(function ($routeProvider) {
                 controller: 'UsersController',
                 templateUrl: 'PartialViews/UserCreation.html'
             })
+        .when('/UploadExcel',
+            {
+                controller: 'XLSXReaderController',
+                templateUrl: 'PartialViews/UploadExcel.html'
+            })
         .when('/',
             {
                 //controller: 'DataUploadController',
