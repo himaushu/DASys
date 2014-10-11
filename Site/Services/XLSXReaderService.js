@@ -2,22 +2,24 @@ app.factory("XLSXReaderService", ['$q', '$rootScope',
     function ($q, $rootScope) {
         var service = function (data) {
             angular.extend(this, data);
-        };
+        }
 
-        service.readFile = function (file, showPreview) {
+        service.readFile = function (file, readCells, toJSON) {
             var deferred = $q.defer();
 
-            XLSXReader(file, showPreview, function (data) {
+            XLSXReader(file, readCells, toJSON, function (data) {
                 $rootScope.$apply(function () {
                     deferred.resolve(data);
-                    console.dir(data);
                 });
             });
 
             return deferred.promise;
-        };
+        }
 
 
         return service;
     }
 ]);
+
+//IE10 issue for readAsBinaryString not working
+//http://www.nczonline.net/blog/2012/05/15/working-with-files-in-javascript-part-2/
