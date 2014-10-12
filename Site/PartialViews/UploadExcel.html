@@ -6,12 +6,12 @@
                 <label for='excel_file'>Excel File</label>
                 <input type="file" name="excel_file" accept=".xlsx" onchange="angular.element(this).scope().fileChanged(this.files);" required="true">
             </div>
-            <div class="checkbox">
+            <div class="checkbox" ng-show="false">
                 <label>
                     <input type="checkbox" ng-model="showPreview" ng-change="showPreviewChanged();">Show preview of excel file
                 </label>
             </div>
-            <div class="checkbox">
+            <div class="checkbox" ng-show="false">
                 <label>
                     <input type="checkbox" ng-model="showJSONPreview">Show JSON preview of selected sheet
                 </label>
@@ -26,12 +26,14 @@
                 </select>
             </div>
             <input type="hidden" name="sheet_name" value="{{ selectedSheetName }}">
-            <input type="submit" value="Submit">
-            <div ng-show="showJSONPreview">
+            <!--<input type="submit" value="Submit">-->
+            <div ng-show='false'>
+                <!--ng-show="showJSONPreview">-->
                 <h4>JSON Preview of selected sheet</h4>
                 <pre class="langauge-javascript"><code>{{ json_string }}</code></pre>
             </div>
-            <div ng-show="showPreview">
+            <div ng-show='false'>
+                <!--ng-show="showPreview">-->
                 <table class="table table-bordered" ng-repeat="(sheetName, sheetData) in sheets" ng-show="sheetName == selectedSheetName">
                     <thead>
                         <tr>
@@ -46,9 +48,9 @@
             <div style="padding:10px 0px 10px 0px">
                 <div class="gridStyle" ng-grid="ExcelGridOptions"></div>
             </div>
-            <div style="padding:10px 10px 10px 10px">
-                <button ng-click="Fetch()">Show Data</button>
-            </div>
+            <!--<div style="padding:10px 10px 10px 10px">
+                <button ng-click="">Show Data</button>
+            </div>-->
 
         </form>
     </div>

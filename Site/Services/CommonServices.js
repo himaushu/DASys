@@ -8,7 +8,7 @@
 
     this.fetchGridOptionsInfoEx = function (TemplateInfo) {
         this.TemplateInfo = TemplateInfo;
-        this.fetchGridOptionsInfo();
+        return this.fetchGridOptionsInfo();
     }
 
     //Define dynamic column definitions
@@ -17,6 +17,7 @@
             console.log('Fetch Template Info.');
             return;
         }
+        //console.dir(TemplateInfo);
         gridOptionsInfo = [];
 
         gridOptionsInfo = {

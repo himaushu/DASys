@@ -12,14 +12,20 @@ app.controller('XLSXReaderController', function ($scope, XLSXReaderService, Comm
     $scope.json_string      = "";
 
     $scope.fileChanged = function (files) {
+        $scope.csvData      = [];
+
         $scope.isProcessing = true;
         $scope.sheets = [];
         $scope.excelFile = files[0];
+
         XLSXReaderService.readFile($scope.excelFile, $scope.showPreview, $scope.showJSONPreview).then(function (xlsxData) {
+            console.log($scope.sheets);
             $scope.sheets = xlsxData.sheets;
             $scope.isProcessing = false;
+            console.log($scope.sheets);
         });
     }
+    
 
     $scope.updateJSONString = function () {
         $scope.csvData      = $scope.sheets[$scope.selectedSheetName];
@@ -37,8 +43,8 @@ app.controller('XLSXReaderController', function ($scope, XLSXReaderService, Comm
             });
         }
     }
-    console.dir($scope.TemplateInfo);
-    CommonService.fetchGridOptionsInfoEx();
+
+    $scope.gridOptionsInfo = CommonService.fetchGridOptionsInfoEx(CommonService.fetchTemplateInfo);
 
     $scope.ExcelGridOptions = $scope.gridOptionsInfo;
 });
