@@ -13,6 +13,7 @@ app.controller('XLSXReaderController', function ($scope, XLSXReaderService, Comm
 
     $scope.fileChanged = function (files) {
         $scope.csvData      = [];
+        $scope.selectedSheetName = '---- Select a sheet ----';
 
         $scope.isProcessing = true;
         $scope.sheets = [];
