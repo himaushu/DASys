@@ -1,5 +1,5 @@
-﻿app.controller('DataUploadController', function ($scope, DataUploadService, $http) {
-    $scope.TemplateInfo     = DataUploadService.GetTemplateInfo();
+﻿app.controller('DataUploadController', function ($scope, CommonService) {
+    $scope.TemplateInfo     = CommonService.fetchTemplateInfo();
     $scope.gridOptionsInfo  = [];
     $scope.csvData          = [];
 
@@ -9,9 +9,14 @@
         $scope.content = $fileContent;
         csvJSON();
     };
+    
+
+    fetchGridOptionsInfo = function () {
+        $scope.gridOptionsInfo = CommonService.fetchGridOptionsInfo();
+    };
 
     //Define dynamic column definitions
-    fetchGridOptionsInfo = function () {
+    /*fetchGridOptionsInfo = function () {
 
         $scope.gridOptionsInfo = {
             data: 'csvData',
@@ -28,8 +33,9 @@
             $scope.gridOptionsInfo.columnDefs.push(objColDef);
         }
 
-    };
+    };*/
 
+    //CSV to JSON
     csvJSON = function () {
         var csv = $scope.content;
 
@@ -78,7 +84,7 @@
     $scope.Fetch = function () {
         //$scope.csvData = [{ "CustomerName": "Narendra Modi", "AcBal": " 18970", "DrCrFlag": " Cr", "BalDate": " 23 Sep 2014" }, { "CustomerName": "James Bond", "AcBal": " 2000", "DrCrFlag": " Dr", "BalDate": " 1 Jan 2014" }, { "CustomerName": "Pramod Shukla", "AcBal": " 5600", "DrCrFlag": " Dr", "BalDate": " 21 Sep 2014" }, { "CustomerName": "Saniya Nehawal", "AcBal": " 600", "DrCrFlag": " Cr", "BalDate": " 1 Aug 2014" }, { "CustomerName": "Perter Brooks", "AcBal": " 23600", "DrCrFlag": " Cr", "BalDate": " 22 March 2014" }];
         $http.get('DBData.csv').success(function (data) {
-                  console.dir(data);
+            console.dir(data);
             $scope.csvData = data;
         });
 
