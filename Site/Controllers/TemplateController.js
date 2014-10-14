@@ -4,17 +4,19 @@ app.controller('TemplateController', function ($scope, TemplateService) {
  $scope.Templates       = TemplateService.getTemplates();
  $scope.UpdateFrequency = TemplateService.getUpdateFrequency();
  $scope.DataTypes       = TemplateService.getDataTypes();
+ $scope.BoolValues      = TemplateService.getBoolVal();
  $scope.TemplateDetails = [];//TemplateService.getTemplateDetails();
  $scope.SelectedRows    = [];
  
  //Column Templates
- $scope.cellInputEditableTemplate      = '<input ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';
+ $scope.cellInputEditableTemplate       = '<input ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';
  $scope.cellSelectEditableTemplateD     = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-options="id as name for (id, name) in DataTypes" />';
- $scope.cellNumberInputEditableTemplate = '<input type="number" ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';  
- $scope.cellSelectEditableTemplateB     = '<input type="checkbox"  ng-class="\'colt\' + col.index" ng-checked="row.entity.Nullable" ng-input="COL_FIELD" step="1"  /></div>';// '<input type="checkbox" ng-model="COL_FIELD"  grid-cell-checkbox="COL_FIELD"/>';//
+ $scope.cellNumberInputEditableTemplate = '<input type="number" ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';
+ $scope.cellSelectEditableTemplateB     = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-options="id as name for (id, name) in BoolValues" />';
+ //$scope.cellSelectEditableTemplateB     = '<input type="checkbox"  ng-class="\'colt\' + col.index" ng-checked="row.entity.Nullable" ng-input="COL_FIELD" step="1"  /></div>';// '<input type="checkbox" ng-model="COL_FIELD"  grid-cell-checkbox="COL_FIELD"/>';//
  
- $scope.cellTemplate = "<div ng-class=\"'ngCellText colt' + $index\"> <span ng-cell-text>{{COL_FIELD}}</span></div>";
- $scope.cellEditTemplate = '<input type="checkbox" ng-checked="row.entity.Nullable==\'on\'" ng-input="COL_FIELD" /></div>';
+ //$scope.cellTemplate = "<div ng-class=\"'ngCellText colt' + $index\"> <span ng-cell-text>{{COL_FIELD}}</span></div>";
+ //$scope.cellEditTemplate = '<input type="checkbox" ng-checked="row.entity.Nullable==\'on\'" ng-input="COL_FIELD" /></div>';
 
  Init = function () {
      $scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
@@ -59,16 +61,12 @@ $scope.Save = function () {
     multiSelect: false, 
     selectedItems: $scope.SelectedRows,  
       columnDefs: [
-      { field: 'FieldName', displayName: 'Field Name', enableCellEditOnFocus: true,  CellFilter:'lowercase',
-        editableCellTemplate: $scope.cellInputEditableTemplate, width: 190   },
-      { field: 'FieldType', displayName: 'Data Type', enableCellEditOnFocus: true, 
-        editableCellTemplate: $scope.cellSelectEditableTemplateD, 
-        cellFilter:'dtFltr'},
-      { field: 'FieldSize', displayName: 'Size', enableCellEdit: true, editableCellTemplate: $scope.cellNumberInputEditableTemplate},        
-      { field: 'Nullable', displayName: 'Is Nullable',  editableCellTemplate: $scope.cellEditTemplate//,
-        //cellTemplate:$scope.cellTemplate
-        
-      }        
+      { field: 'FieldName', displayName: 'Field Name', enableCellEditOnFocus: true,  CellFilter:'lowercase', editableCellTemplate: $scope.cellInputEditableTemplate, width: 190   },
+      { field: 'FieldType', displayName: 'Data Type', enableCellEditOnFocus: true, editableCellTemplate: $scope.cellSelectEditableTemplateD, cellFilter:'dtFltr'},
+      { field: 'FieldSize', displayName: 'Size', enableCellEdit: true, editableCellTemplate: $scope.cellNumberInputEditableTemplate },
+      { field: 'FieldValidations', displayName: 'Special Validations', enableCellEdit: true, editableCellTemplate: $scope.cellInputEditableTemplate, width: 190  },
+      { field: '', enableCellEdit: false, cellTemplate: '<button ng-click="AddValidationList(row)">List</button>' },
+      { field: 'Nullable', displayName: 'Is Nullable', editableCellTemplate: $scope.cellSelectEditableTemplateB, cellFilter: 'boolFltr' }
     ]};
 
 //var DTS       = [{Id:1, Name:'String'}, {Id:2, Name:'Numeric'}, {Id:3, Name:'Boolean'}, {Id:4, Name:'Date'}];  
@@ -107,6 +105,7 @@ app.controller('NavbarController', function ($scope, $location) {
 });
 */
 //Resource
+//http://technpol.wordpress.com/2013/12/06/editable-nggrid-with-both-dropdowns-and-selects/
 //https://github.com/angular-ui/ng-grid/wiki/Templating
 //https://github.com/angular-ui/ng-grid/wiki/Configuration-Options
 //http://expertsoverflow.com/questions/tagged/ng-grid
