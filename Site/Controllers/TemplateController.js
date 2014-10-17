@@ -1,11 +1,13 @@
 app.controller('TemplateController', function ($scope, TemplateService) {
     
  $scope.Statuses        = TemplateService.getStatuses();
- $scope.Templates       = TemplateService.getTemplates();
+ $scope.Templates       = [];//TemplateService.getTemplates();
+ $scope.TemplateInfo    = [];    
+ 
  $scope.UpdateFrequency = TemplateService.getUpdateFrequency();
  $scope.DataTypes       = TemplateService.getDataTypes();
  $scope.BoolValues      = TemplateService.getBoolVal();
- $scope.TemplateDetails = [];//TemplateService.getTemplateDetails();
+ //$scope.TemplateDetails = [];//TemplateService.getTemplateDetails();
  $scope.SelectedRows    = [];
  
  //Column Templates
@@ -19,7 +21,8 @@ app.controller('TemplateController', function ($scope, TemplateService) {
  //$scope.cellEditTemplate = '<input type="checkbox" ng-checked="row.entity.Nullable==\'on\'" ng-input="COL_FIELD" /></div>';
 
  Init = function () {
-     $scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
+     $scope.TemplateInfo    = TemplateService.getTemplateInfo();
+     //$scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
  };
 
 //load data on opening
@@ -29,7 +32,7 @@ app.controller('TemplateController', function ($scope, TemplateService) {
 
  $scope.addTemplateDetails = function (){
    
-    $scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
+    $scope.TemplateInfo.Details.push(TemplateService.getTemplateDetailsNewRow());
     //$scope.gridOptions.selectItem($scope.TemplateDetails.length-1, true);
     //console.log($scope.TemplateDetails.length-1);
       //var grid = $scope.gridOptions.ngGrid;
@@ -40,10 +43,10 @@ app.controller('TemplateController', function ($scope, TemplateService) {
 $scope.RemoveTemplateDetails = function () {
 
   //console.log($scope.SelectedRows[0]);
-  var index = $scope.TemplateDetails.indexOf($scope.SelectedRows[0]);
+  var index = $scope.TemplateInfo.Details.indexOf($scope.SelectedRows[0]);
       //alert(index);
       $scope.gridOptions.selectItem(index, false);
-      $scope.TemplateDetails.splice(index, 1);  
+      $scope.TemplateInfo.Details.splice(index, 1);  
 
     //window.scrollTo(index-1,0);
   
@@ -51,7 +54,7 @@ $scope.RemoveTemplateDetails = function () {
 
 //TO DO: connect to service to pass on the data
 $scope.Save = function () {
-    alert(JSON.stringify($scope.TemplateDetails));
+    alert(JSON.stringify($scope.TemplateInfo.Details));
 };
 
    $scope.gridOptions = {
