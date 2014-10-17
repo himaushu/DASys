@@ -13,7 +13,7 @@ this.getTemplates = function(){
 };
 
 this.getTemplateInfo = function(){
-  templateInfo.Details  = getTemplateDetailsNewRow();
+  templateInfo.Details  = this.getTemplateDetailsNewRow();
   return templateInfo;
 };
 /*this.getTemplateDetails = function(){
