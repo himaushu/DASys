@@ -4,59 +4,83 @@
             <h3>Add/Modify Template</h3>
         </header>
         <form name="userForm" ng-submit="submitForm()" novalidate>        
-        <!-- Template NAME -->
-        <div class="form-group" ng-class="{ 'has-error' : userForm.templateName.$invalid && (userForm.templateName.$dirty || submitted)}">
-            <label>Template Name : </label>
-            <input type="text" name="templateName" class="form-control" ng-model="TemplateInfo.Name" placeholder="New Template Name" ng-required="true">
-            <p ng-show="userForm.templateName.$error.required && (userForm.templateName.$dirty || submitted)" class="help-block">Template name is required.</p>
-        </div>        
-        <!-- Update Frequency -->
-        <div class="form-group" ng-class="{ 'has-error' : userForm.updateFrq.$invalid  && (userForm.updateFrq.$dirty || submitted)}">
-            <label>Update frequency</label>
-            <select name="updateFrq" class="form-control"
-                    ng-model="TemplateInfo.UpdateFrequency"
-                    ng-options="updFrq.Id as updFrq.Name for updFrq in UpdateFrequency"
-                    ng-required="true">
-                <option value=''>Select</option>
-            </select>
-            <p ng-show="userForm.updateFrq.$error.required  && (userForm.updateFrq.$dirty || submitted)" class="help-block">Select Update Frequency</p>
-        </div>
-        <div class="form-group"  >
-            <label>First Line as Header : </label>
-            <input type="checkbox" name="FstLineHd" ng-model="TemplateInfo.FirstLineHeader" >
-        </div>        
-        <div class="form-group"  >
-            <label>Maker/Checker Required : </label>
-            <input type="checkbox" name="mkrChkr" ng-model="TemplateInfo.MakerCheckerReq" >
-        </div>        
-        <div class="form-group"  >
-            <label>Replace Data on upload : </label>
-            <input type="checkbox" name="rplData" ng-model="TemplateInfo.ReplaceData" >
-        </div>        
-        <div class="form-group" ng-class="{ 'has-error' : userForm.updateFrq.$invalid  && (userForm.updateFrq.$dirty || submitted)}">
-            <label>Update frequency</label>
-            <select name="updateFrq" class="form-control"
-                    ng-model="TemplateInfo.UpdateFrequency"
-                    ng-options="updFrq.Id as updFrq.Name for updFrq in UpdateFrequency"
-                    ng-required="true">
-                <option value=''>Select</option>
-            </select>
-            <p ng-show="userForm.updateFrq.$error.required  && (userForm.updateFrq.$dirty || submitted)" class="help-block">Select Update Frequency</p>
-        </div>
-        <hr>
-        <div class="gridStyle" ng-grid="gridOptions" ng-class="slide"></div>
-        <!-- <div>
-        {{DataTypes[1].Name}}
-        <ul>
-          <li ng-repeat="d in DataTypes">
-          {{d.Name}}
-        </ul>
-        </div> -->
-        <div style="padding-top:5px">
-            <button ng-click='addTemplateDetails();'>Add</button>
-            <button ng-click='RemoveTemplateDetails();'>Remove</button>
-            <button ng-click='Save()'>Save</button>
-        </div>
+            <!-- Template NAME -->
+            <div style="width:50%">
+                <div class="form-group" ng-class="{ 'has-error' : userForm.templateName.$invalid && (userForm.templateName.$dirty || submitted)}">
+                    <label>Template Name : </label>
+                    <input type="text" name="templateName" class="form-control" ng-model="TemplateInfo.Name" placeholder="New Template Name" ng-required="true">
+                    <p ng-show="userForm.templateName.$error.required && (userForm.templateName.$dirty || submitted)" class="help-block">Template name is required.</p>
+                </div>
+                <!-- Update Frequency -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.updateFrq.$invalid  && (userForm.updateFrq.$dirty || submitted)}">
+                    <label>Update frequency</label>
+                    <select name="updateFrq" class="form-control"
+                            ng-model="TemplateInfo.UpdateFrequency"
+                            ng-options="updFrq.Id as updFrq.Name for updFrq in UpdateFrequency"
+                            ng-required="true">
+                        <option value=''>Select</option>
+                    </select>
+                    <p ng-show="userForm.updateFrq.$error.required  && (userForm.updateFrq.$dirty || submitted)" class="help-block">Select Data update frequency.</p>
+                </div>
+                <table width="100%">
+                    <tr>
+                        <td width="40%">
+                            <div class="form-group">
+                                <label>First Line as Header : </label>
+                                <input type="checkbox" name="FstLineHd" ng-model="TemplateInfo.FirstLineHeader">
+                            </div>
+                        </td>
+                        <td></td>
+                        <td width="40%">
+                            <div class="form-group">
+                                <label>Maker/Checker Required : </label>
+                                <input type="checkbox" name="mkrChkr" ng-model="TemplateInfo.MakerCheckerReq">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="form-group">
+                    <label>Replace Data on upload : </label>
+                    <input type="checkbox" name="rplData" ng-model="TemplateInfo.ReplaceData">
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.dbDetails.$invalid  && (userForm.dbDetails.$dirty || submitted)}">
+                    <label>DB details :</label>
+                    <select name="dbDetails" class="form-control"
+                            ng-model="TemplateInfo.DBId"
+                            ng-options="dbDtls.Id as dbDtls.Name for dbDtls in DBDetails"
+                            ng-required="true">
+                        <option value=''>Select</option>
+                    </select>
+                    <p ng-show="userForm.dbDetails.$error.required  && (userForm.dbDetails.$dirty || submitted)" class="help-block">Select DB details that stores data.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.sts.$invalid  && (userForm.sts.$dirty || submitted)}">
+                    <label>Status :</label>
+                    <select name="sts" class="form-control"
+                            ng-model="TemplateInfo.Status"
+                            ng-options="st.Id as st.Name for st in Statuses"
+                            ng-required="true">
+                        <option value=''>Select</option>
+                    </select>
+                    <p ng-show="userForm.sts.$error.required  && (userForm.sts.$dirty || submitted)" class="help-block">Select template Status.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="gridStyle" ng-grid="gridOptions" ng-class="slide"></div>
+            <!-- <div>
+            {{DataTypes[1].Name}}
+            <ul>
+              <li ng-repeat="d in DataTypes">
+              {{d.Name}}
+            </ul>
+            </div> -->
+            <hr />
+            <div style="padding-top:5px">
+                <button ng-click='addTemplateDetails();'>Add</button>
+                <button ng-click='RemoveTemplateDetails();'>Remove</button>
+                <button ng-click='Save()'>Save</button>
+            </div>
+            <hr />
         </form>
     </div>
 </div>

@@ -33,6 +33,12 @@ function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'PartialViews/UploadExcel.html',
         controller: 'XLSXReaderController'
     })
+    .state('DataUpload', {
+        url: '/DataUpload',
+        templateUrl: 'PartialViews/DataUpload.html',
+        controller: 'DataUploadController'
+    })
+
   $urlRouterProvider.otherwise('/Home');
 }]);
 

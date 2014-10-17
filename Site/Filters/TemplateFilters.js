@@ -8,9 +8,9 @@ app.filter('dtFltr', function(TemplateService){
     };
     
     var dt = a ();     
-    console.log(dt);
-    console.log(Input);
-    console.log(dt);
+    //console.log(dt);
+    //console.log(Input);
+    //console.log(dt);
 
     if (dt [Input]){
       return dt[Input] ;

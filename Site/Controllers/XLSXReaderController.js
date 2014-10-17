@@ -30,7 +30,7 @@ app.controller('XLSXReaderController', function ($scope, XLSXReaderService, Comm
 
     $scope.updateJSONString = function () {
         $scope.csvData      = $scope.sheets[$scope.selectedSheetName];
-        console.dir($scope.csvData);
+        //console.dir($scope.csvData);
         $scope.json_string  = JSON.stringify($scope.csvData, null, 2);
     }
 

@@ -1,33 +1,40 @@
 app.controller('TemplateController', function ($scope, TemplateService) {
     
- $scope.Statuses        = TemplateService.getStatuses();
- $scope.Templates       = [];//TemplateService.getTemplates();
- $scope.TemplateInfo    = {};    
+     $scope.Statuses        = []
+     $scope.Templates       = [];//TemplateService.getTemplates();
+     $scope.TemplateInfo    = {};    
  
- $scope.UpdateFrequency = TemplateService.getUpdateFrequency();
- $scope.DataTypes       = TemplateService.getDataTypes();
- $scope.BoolValues      = TemplateService.getBoolVal();
- //$scope.TemplateDetails = [];//TemplateService.getTemplateDetails();
- $scope.SelectedRows    = [];
- 
- //Column Templates
- $scope.cellInputEditableTemplate       = '<input ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';
- $scope.cellSelectEditableTemplateD     = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-options="id as name for (id, name) in DataTypes" />';
- $scope.cellNumberInputEditableTemplate = '<input type="number" ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';
- $scope.cellSelectEditableTemplateB     = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-options="id as name for (id, name) in BoolValues" />';
- //$scope.cellSelectEditableTemplateB     = '<input type="checkbox"  ng-class="\'colt\' + col.index" ng-checked="row.entity.Nullable" ng-input="COL_FIELD" step="1"  /></div>';// '<input type="checkbox" ng-model="COL_FIELD"  grid-cell-checkbox="COL_FIELD"/>';//
+     $scope.UpdateFrequency = [];
+     $scope.DataTypes       = [];
+     $scope.BoolValues      = [];
+     //$scope.TemplateDetails = [];//TemplateService.getTemplateDetails();
+     $scope.SelectedRows    = [];
+     $scope.DBDetails       = [];
+    
+     //Column Templates
+     $scope.cellInputEditableTemplate       = '<input ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';
+     $scope.cellSelectEditableTemplateD     = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-options="id as name for (id, name) in DataTypes" />';
+     $scope.cellNumberInputEditableTemplate = '<input type="number" ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" />';
+     $scope.cellSelectEditableTemplateB     = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-options="id as name for (id, name) in BoolValues" />';
+     //$scope.cellSelectEditableTemplateB     = '<input type="checkbox"  ng-class="\'colt\' + col.index" ng-checked="row.entity.Nullable" ng-input="COL_FIELD" step="1"  /></div>';// '<input type="checkbox" ng-model="COL_FIELD"  grid-cell-checkbox="COL_FIELD"/>';//
  
  //$scope.cellTemplate = "<div ng-class=\"'ngCellText colt' + $index\"> <span ng-cell-text>{{COL_FIELD}}</span></div>";
  //$scope.cellEditTemplate = '<input type="checkbox" ng-checked="row.entity.Nullable==\'on\'" ng-input="COL_FIELD" /></div>';
 
  Init = function () {
-     $scope.TemplateInfo    = TemplateService.getTemplateInfo();
+    $scope.UpdateFrequency  = TemplateService.getUpdateFrequency();
+    $scope.Statuses         = TemplateService.getStatuses();
+    $scope.DataTypes        = TemplateService.getDataTypes();
+    $scope.BoolValues       = TemplateService.getBoolVal();
+    $scope.DBDetails        = TemplateService.getDBDetails();
+    $scope.TemplateInfo     = TemplateService.getTemplateInfo();
      //$scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
  };
 
 //load data on opening
  $scope.$on('$viewContentLoaded', function () {
      Init();
+     //console.log('extered');
  });
 
  $scope.addTemplateDetails = function (){
@@ -82,12 +89,23 @@ $scope.Save = function () {
    });
 
    $scope.$on('$locationChangeStart', function (event) {
+       if (!$scope.preventNavigation){
+           return;
+       }
        var answer = confirm("Are you sure you want to leave this page?")
        if (!answer) {
            event.preventDefault();
        }
    });
 
+  $scope.$watch('userForm.$dirty', function (dirty) {
+    if (dirty) {
+      $scope.preventNavigation = true;
+    }
+    else {
+      $scope.preventNavigation = false;
+    }
+  });
 });
 
 
