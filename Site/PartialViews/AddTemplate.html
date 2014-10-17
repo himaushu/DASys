@@ -12,15 +12,20 @@
         </div>        
         <!-- Update Frequency -->
         <div class="form-group" ng-class="{ 'has-error' : userForm.updateFrq.$invalid  && (userForm.updateFrq.$dirty || submitted)}">
-            <label>City</label>
+            <label>Update frequency</label>
             <select name="updateFrq" class="form-control"
-                    ng-model="UpdateFrequency"
+                    ng-model="TemplateInfo.UpdateFrequency"
                     ng-options="updFrq.Id as updFrq.Name for updFrq in UpdateFrequency"
                     ng-required="true">
                 <option value=''>Select</option>
             </select>
             <p ng-show="userForm.updateFrq.$error.required  && (userForm.updateFrq.$dirty || submitted)" class="help-block">Select Update Frequency</p>
+        </div>
+        <div >
+            <label>First Line as Header : </label>
+            <input type="checkbox" name="FstLineHd" class="form-control" ng-model="TemplateInfo.FirstLineHeader" >
         </div>        
+        <hr>
         <div class="gridStyle" ng-grid="gridOptions" ng-class="slide"></div>
         <!-- <div>
         {{DataTypes[1].Name}}
