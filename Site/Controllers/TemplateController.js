@@ -2,7 +2,7 @@ app.controller('TemplateController', function ($scope, TemplateService) {
     
  $scope.Statuses        = TemplateService.getStatuses();
  $scope.Templates       = [];//TemplateService.getTemplates();
- $scope.TemplateInfo    = [];    
+ $scope.TemplateInfo    = {};    
  
  $scope.UpdateFrequency = TemplateService.getUpdateFrequency();
  $scope.DataTypes       = TemplateService.getDataTypes();
