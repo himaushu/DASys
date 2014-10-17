@@ -11,15 +11,15 @@
             <p ng-show="userForm.templateName.$error.required && (userForm.templateName.$dirty || submitted)" class="help-block">Template name is required.</p>
         </div>        
         <!-- Update Frequency -->
-        <div class="form-group" ng-class="{ 'has-error' : userForm.city.$invalid  && (userForm.city.$dirty || submitted)}">
+        <div class="form-group" ng-class="{ 'has-error' : userForm.updateFrq.$invalid  && (userForm.updateFrq.$dirty || submitted)}">
             <label>City</label>
             <select name="updateFrq" class="form-control"
-                    ng-model="user.city"
-                    ng-options="city.CityId as city.Name for city in cityList"
+                    ng-model="UpdateFrequency"
+                    ng-options="updFrq.Id as updFrq.Name for updFrq in UpdateFrequency"
                     ng-required="true">
                 <option value=''>Select</option>
             </select>
-            <p ng-show="userForm.city.$error.required  && (userForm.city.$dirty || submitted)" class="help-block">Select city.</p>
+            <p ng-show="userForm.updateFrq.$error.required  && (userForm.updateFrq.$dirty || submitted)" class="help-block">Select Update Frequency</p>
         </div>        
         <div class="gridStyle" ng-grid="gridOptions" ng-class="slide"></div>
         <!-- <div>
