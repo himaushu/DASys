@@ -58,7 +58,7 @@ $scope.Save = function () {
 };
 
    $scope.gridOptions = {
-    data: 'TemplateDetails',
+    data: 'TemplateInfo.Details',
     enableRowSelection: true,
     enableCellEditOnFocus: true,
     multiSelect: false, 
