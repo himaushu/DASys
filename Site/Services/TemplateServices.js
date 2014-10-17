@@ -48,7 +48,7 @@ var boolVal         = {1:'True', 2:'False'};
 
 var templates       = [{Id:1, Name:'Default'}];
 //Dynamic code
-var templateInfo    = {Id:1, Name:'Default', TableName:'', UpdateFrequency:1, FistLineHeader:1, 
+var templateInfo    = {Id:1, Name:'Default', TableName:'', UpdateFrequency:1, FirstLineHeader:1, 
                           MakerCheckerReq:2, ReplaceData:1, DBID:1, Status:1, Details:[],  CreatedBy:1, CreatedOn:'15 Sep 2014'};
 //var templateDetails = [];//[{Id:1, FieldName:'Field1', FieldType:1, FieldSize:10, FieldValidations:'', Nullable:true, IsPrimaryKey:false }];
 
