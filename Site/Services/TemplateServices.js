@@ -12,7 +12,7 @@ this.getTemplates = function(){
   return templates;
 };
 
-this.getTemplateInfo() = function(){
+this.getTemplateInfo = function(){
   templateInfo.Details  = getTemplateDetailsNewRow();
   return templateInfo;
 };
