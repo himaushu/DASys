@@ -12,6 +12,10 @@ this.getTemplates = function(){
   return templates;
 };
 
+this.getTemplateInfo() = function(){
+  templateInfo.Details  = getTemplateDetailsNewRow();
+  return templateInfo;
+};
 /*this.getTemplateDetails = function(){
   cnt++;
   templateDetails.push(tmp());
@@ -42,8 +46,9 @@ var statuses        = [{Id:1, Name:'Active'}, {Id:2, Name:'Deactive'}, {Id:1, Na
 var updateFrequency = [{Id:1, Name:'Frequently'}, {Id:2, Name:'Once a Week'}, {Id:3, Name:'Once in a Month'}];
 var boolVal         = {1:'True', 2:'False'}; 
 
+var templates       = [{Id:1, Name:'Default'}];
 //Dynamic code
-var templates       = [{Id:1, Name:'Default', TableName:'', UpdateFrequency:1, FistLineHeader:1, 
+var templateInfo    = [{Id:1, Name:'Default', TableName:'', UpdateFrequency:1, FistLineHeader:1, 
                           MakerCheckerReq:2, ReplaceData:1, DBID:1, Status:1, Details:[],  CreatedBy:1, CreatedOn:'15 Sep 2014'}];
 //var templateDetails = [];//[{Id:1, FieldName:'Field1', FieldType:1, FieldSize:10, FieldValidations:'', Nullable:true, IsPrimaryKey:false }];
 
