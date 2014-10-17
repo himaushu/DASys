@@ -10,7 +10,17 @@
             <input type="text" name="templateName" class="form-control" ng-model="TemplateInfo.Name" placeholder="New Template Name" ng-required="true">
             <p ng-show="userForm.templateName.$error.required && (userForm.templateName.$dirty || submitted)" class="help-block">Template name is required.</p>
         </div>        
-        
+        <!-- Update Frequency -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.city.$invalid  && (userForm.city.$dirty || submitted)}">
+            <label>City</label>
+            <select name="updateFrq" class="form-control"
+                    ng-model="user.city"
+                    ng-options="city.CityId as city.Name for city in cityList"
+                    ng-required="true">
+                <option value=''>Select</option>
+            </select>
+            <p ng-show="userForm.city.$error.required  && (userForm.city.$dirty || submitted)" class="help-block">Select city.</p>
+        </div>        
         <div class="gridStyle" ng-grid="gridOptions" ng-class="slide"></div>
         <!-- <div>
         {{DataTypes[1].Name}}
