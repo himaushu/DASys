@@ -3,6 +3,14 @@
         <header>
             <h3>Add/Modify Template</h3>
         </header>
+        <form name="userForm" ng-submit="submitForm()" novalidate>        
+        <!-- Template NAME -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.templateName.$invalid && (userForm.templateName.$dirty || submitted)}">
+            <label>Template Name : </label>
+            <input type="text" name="templateName" class="form-control" ng-model="TemplateInfo.Name" placeholder="New Template Name" ng-required="true">
+            <p ng-show="userForm.templateName.$error.required && (userForm.templateName.$dirty || submitted)" class="help-block">Template name is required.</p>
+        </div>        
+        
         <div class="gridStyle" ng-grid="gridOptions" ng-class="slide"></div>
         <!-- <div>
         {{DataTypes[1].Name}}
@@ -16,6 +24,7 @@
             <button ng-click='RemoveTemplateDetails();'>Remove</button>
             <button ng-click='Save()'>Save</button>
         </div>
+        </form>
     </div>
 </div>
 
