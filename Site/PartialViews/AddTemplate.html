@@ -21,10 +21,28 @@
             </select>
             <p ng-show="userForm.updateFrq.$error.required  && (userForm.updateFrq.$dirty || submitted)" class="help-block">Select Update Frequency</p>
         </div>
-        <div >
+        <div class="form-group"  >
             <label>First Line as Header : </label>
-            <input type="checkbox" name="FstLineHd" class="form-control" ng-model="TemplateInfo.FirstLineHeader" >
+            <input type="checkbox" name="FstLineHd" ng-model="TemplateInfo.FirstLineHeader" >
         </div>        
+        <div class="form-group"  >
+            <label>Maker/Checker Required : </label>
+            <input type="checkbox" name="mkrChkr" ng-model="TemplateInfo.MakerCheckerReq" >
+        </div>        
+        <div class="form-group"  >
+            <label>Replace Data on upload : </label>
+            <input type="checkbox" name="rplData" ng-model="TemplateInfo.ReplaceData" >
+        </div>        
+        <div class="form-group" ng-class="{ 'has-error' : userForm.updateFrq.$invalid  && (userForm.updateFrq.$dirty || submitted)}">
+            <label>Update frequency</label>
+            <select name="updateFrq" class="form-control"
+                    ng-model="TemplateInfo.UpdateFrequency"
+                    ng-options="updFrq.Id as updFrq.Name for updFrq in UpdateFrequency"
+                    ng-required="true">
+                <option value=''>Select</option>
+            </select>
+            <p ng-show="userForm.updateFrq.$error.required  && (userForm.updateFrq.$dirty || submitted)" class="help-block">Select Update Frequency</p>
+        </div>
         <hr>
         <div class="gridStyle" ng-grid="gridOptions" ng-class="slide"></div>
         <!-- <div>
