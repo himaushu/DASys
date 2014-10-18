@@ -27,7 +27,9 @@ app.controller('TemplateController', function ($scope, TemplateService) {
     $scope.DataTypes        = TemplateService.getDataTypes();
     $scope.BoolValues       = TemplateService.getBoolVal();
     $scope.DBDetails        = TemplateService.getDBDetails();
-    $scope.TemplateInfo     = TemplateService.getTemplateInfo();
+
+    $scope.TemplateInfo     = TemplateService.getNewTemplateInfo();
+     //console.log($scope.TemplateInfo);
      //$scope.TemplateDetails.push(TemplateService.getTemplateDetailsNewRow());
  };
 

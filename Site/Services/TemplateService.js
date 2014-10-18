@@ -9,10 +9,8 @@ app.service('TemplateService', function(){
 
     var templates       = [{ Id: 1, Name: 'Default' }];
     //Dynamic code
-    var templateInfo    = {
-        Id: 1, Name: 'Default', TableName: '', UpdateFrequency: 1, FirstLineHeader: 1,
-        MakerCheckerReq: 2, ReplaceData: 1, DBId: 1, Status: 1, Details: [], CreatedBy: 1, CreatedOn: '15 Sep 2014'
-    };
+    //var templateInfo    = {};
+
     //var templateDetails = [];//[{Id:1, FieldName:'Field1', FieldType:1, FieldSize:10, FieldValidations:'', Nullable:true, IsPrimaryKey:false }];
 
     var dbDetails       = [{ Id: 1, Name: 'SQLServer' }, { Id: 2, Name: 'MangoDB' }];
@@ -32,11 +30,7 @@ app.service('TemplateService', function(){
       return templates;
     };
 
-    this.getTemplateInfo = function(){
-      templateInfo.Details.push(this.getTemplateDetailsNewRow());
-      return templateInfo;
-    };
-
+   
     this.getDBDetails = function () {
         return dbDetails;
     };
@@ -47,9 +41,33 @@ app.service('TemplateService', function(){
     };*/
 
     this.getTemplateDetailsNewRow = function(){
-      cnt++;
-      //console.log(cnt);
-      return tmp();
+        cnt++;
+        return tmp();
+    };
+    //Can used with RESTful service to fetch realtime data
+    this.getTemplateInfo = function (Id)
+    {
+        var tmlt = {Id: 2, Name: 'CustomerCare', TableName: 'tbl_CustomerNetWroth', UpdateFrequency: 1, FirstLineHeader: 1,
+                MakerCheckerReq: 2, ReplaceData: 1, DBId: 1, Status: 1, Details: [], CreatedBy: 1, CreatedOn: '15 Sep 2014'};
+          
+        tmlt.Details = [
+                {Id:1, FieldName: 'CustomerName', FieldType: 1, FieldSize: 20, FieldValidations: '[a-z][A-Z][0-9][space]'   , IsNullable: 1, ValidationList: [], IsPrimaryKey:false}, 
+                {Id:2, FieldName: 'AcBal'       , FieldType: 2, FieldSize: 10, FieldValidations: '[0-100000]'               , IsNullable: 1, ValidationList: [], IsPrimaryKey:false}, 
+                {Id:3, FieldName: 'DrCrFlag'    , FieldType: 2, FieldSize: 10, FieldValidations: ''                         , IsNullable: 1, ValidationList: [{1:'Dr'},{2:'Cr'}], IsPrimaryKey:false}, 
+                {Id:4, FieldName: 'BalDate'     , FieldType: 2, FieldSize: 10, FieldValidations: '["dd-mm-yyyy"]["01-01-1990"]', IsNullable: 1, ValidationList: [], IsPrimaryKey:false} 
+                        ];
+        return tmlt;
+    };
+
+    this.getNewTemplateInfo = function ()
+    {
+        var templateInfo = {
+            Id: 1, Name: 'Default', TableName: '', UpdateFrequency: 1, FirstLineHeader: 1,
+            MakerCheckerReq: 2, ReplaceData: 1, DBId: 1, Status: 1, Details: [], CreatedBy: 1, CreatedOn: '15 Sep 2014'};    
+
+        templateInfo.Details.push(this.getTemplateDetailsNewRow());
+
+        return templateInfo;
     };
 
     this.getBoolVal = function(){

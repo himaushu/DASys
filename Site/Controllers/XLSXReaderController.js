@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('XLSXReaderController', function ($scope, XLSXReaderService, CommonService) {
+app.controller('XLSXReaderController', function ($scope, XLSXReaderService, CommonService, TemplateService) {
 
-    $scope.TemplateInfo     = CommonService.fetchTemplateInfo();
+    //$scope.TemplateInfo     = CommonService.fetchTemplateInfo(2);
 
     $scope.gridOptionsInfo  = [];
     $scope.csvData          = [];
@@ -45,7 +45,7 @@ app.controller('XLSXReaderController', function ($scope, XLSXReaderService, Comm
         }
     }
 
-    $scope.gridOptionsInfo = CommonService.fetchGridOptionsInfoEx(CommonService.fetchTemplateInfo);
+    $scope.gridOptionsInfo = CommonService.fetchGridOptionsInfoEx(CommonService.fetchTemplateInfo(2));
 
     $scope.ExcelGridOptions = $scope.gridOptionsInfo;
 });

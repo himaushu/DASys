@@ -1,8 +1,9 @@
-﻿app.service('CommonService', ['$rootScope', 'DataUploadService', function (scope, DataUploadService) {
-    var TemplateInfo = [];
+﻿app.service('CommonService', ['$rootScope', 'TemplateService', function (scope, TemplateService) {
+    var TemplateInfo = {};
 
-    this.fetchTemplateInfo = function () {
-        TemplateInfo = DataUploadService.GetTemplateInfo();
+    this.fetchTemplateInfo = function (Id) {
+        //TemplateInfo = DataUploadService.GetTemplateInfo();
+        TemplateInfo = TemplateService.getTemplateInfo(Id);
         return TemplateInfo;
     };
 
@@ -27,10 +28,10 @@
             showSelectionCheckbox: true,
             enableColumnResize: true,
         };
-        var len = TemplateInfo.length;
+        var len = TemplateInfo.Details.length;
 
         for (var i = 0; i < len; i++) {
-            var objColDef = { field: TemplateInfo[i].Name, displayName: TemplateInfo[i].Name, width: '*' };
+            var objColDef = { field: TemplateInfo.Details [i].FieldName , displayName: TemplateInfo.Details[i].FieldName , width: '*' };
 
             gridOptionsInfo.columnDefs.push(objColDef);
         }
