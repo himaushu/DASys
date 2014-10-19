@@ -5,3 +5,26 @@
     };
 
 });
+
+app.directive('showError', function() {
+  
+  retTemplate = function (data){
+    if(data == ''){
+        return "<div>{{row.entity[col.field]}}</div>' }";
+    }else{
+        return "<div class='ngCellText' ng-cell-text ng-class='col.colIndex()'>"+ 
+                "<span ng-show='COL_FIELD' class='icon icon-ok'/>"+
+                "</div>";
+    }
+  
+  };
+
+  return {
+    restrict: 'C',
+    replace: true,
+    transclude: true,
+    scope: { myData: '@myData' },
+    template: retTemplate (myData)
+  }
+  
+});

@@ -51,10 +51,10 @@ app.service('TemplateService', function(){
                 MakerCheckerReq: 2, ReplaceData: 1, DBId: 1, Status: 1, Details: [], CreatedBy: 1, CreatedOn: '15 Sep 2014'};
           
         tmlt.Details = [
-                {Id:1, FieldName: 'CustomerName', FieldType: 1, FieldSize: 20, FieldValidations: '[a-z][A-Z][0-9][space]'   , IsNullable: 1, ValidationList: [], IsPrimaryKey:false}, 
+                {Id:1, FieldName: 'CustomerName', FieldType: 1, FieldSize: 10, FieldValidations: '[a-z][A-Z][0-9][space]'   , IsNullable: 1, ValidationList: [], IsPrimaryKey:false}, 
                 {Id:2, FieldName: 'AcBal'       , FieldType: 2, FieldSize: 10, FieldValidations: '[0-100000]'               , IsNullable: 1, ValidationList: [], IsPrimaryKey:false}, 
                 {Id:3, FieldName: 'DrCrFlag'    , FieldType: 2, FieldSize: 10, FieldValidations: ''                         , IsNullable: 1, ValidationList: [{1:'Dr'},{2:'Cr'}], IsPrimaryKey:false}, 
-                {Id:4, FieldName: 'BalDate'     , FieldType: 2, FieldSize: 10, FieldValidations: '["dd-mm-yyyy"]["01-01-1990"]', IsNullable: 1, ValidationList: [], IsPrimaryKey:false} 
+                {Id:4, FieldName: 'BalDate'     , FieldType: 3, FieldSize: 10, FieldValidations: '["dd-mm-yyyy"]["01-01-1990"]', IsNullable: 1, ValidationList: [], IsPrimaryKey:false} 
                         ];
         return tmlt;
     };
@@ -71,17 +71,17 @@ app.service('TemplateService', function(){
     };
 
     this.getBoolVal = function(){
-      return boolVal;
+        return boolVal;
     };
 
     this.getUpdateFrequency = function(){
-      return updateFrequency;
+        return updateFrequency;
     };
 
     //TemplateDetails sample
     var tmp = function(){
         var ret = {Id:0, FieldName:'<Field' + cnt + '>', FieldType:1, FieldSize:10,  FieldValidations:'', Nullable:1, ValidationList : [],  IsPrimaryKey:false };
-     return ret ;
+        return ret ;
     };
 
 });

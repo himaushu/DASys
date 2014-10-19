@@ -1,4 +1,4 @@
-﻿app.controller('DataUploadController', function ($scope, $http, CommonService) {
+﻿app.controller('DataUploadController', function ($scope, $http, $parse, CommonService) {
     $scope.TemplateInfo     = CommonService.fetchTemplateInfo(2);
     $scope.gridOptionsInfo  = [];
     $scope.csvData          = [];
@@ -67,7 +67,7 @@
             } else {
                 console.log('Length Missmatch :' + lines[i])
             }
-
+            obj['Error'] = '';
             $scope.csvData.push(obj);
         }
 
@@ -84,11 +84,50 @@
     $scope.Fetch = function () {
         //$scope.csvData = [{ "CustomerName": "Narendra Modi", "AcBal": " 18970", "DrCrFlag": " Cr", "BalDate": " 23 Sep 2014" }, { "CustomerName": "James Bond", "AcBal": " 2000", "DrCrFlag": " Dr", "BalDate": " 1 Jan 2014" }, { "CustomerName": "Pramod Shukla", "AcBal": " 5600", "DrCrFlag": " Dr", "BalDate": " 21 Sep 2014" }, { "CustomerName": "Saniya Nehawal", "AcBal": " 600", "DrCrFlag": " Cr", "BalDate": " 1 Aug 2014" }, { "CustomerName": "Perter Brooks", "AcBal": " 23600", "DrCrFlag": " Cr", "BalDate": " 22 March 2014" }];
         $http.get('DBData.csv').success(function (data) {
-            console.dir(data);
             $scope.csvData = data;
         });
 
     };
+
+
+    $scope.validate = function(){
+        var lenDT       = $scope.TemplateInfo.Details.length;
+        var lenData     = $scope.csvData.length;
+        //Each row
+        for(i=0; i < lenData; i++){
+            var row     = $scope.csvData[i];
+            //console.dir(row);
+            var rowError = '';
+
+            //Each field detail
+            for (j=0;j<lenDT;j++){
+                var detail  = $scope.TemplateInfo.Details[j];
+
+                switch(detail.FieldType)
+                {
+                    case 1:
+                        if(row[detail.FieldName].length > detail.FieldSize){
+                            rowError += ' * Field :' + detail.FieldName + ' is more than ' + detail.FieldSize  + ' ';                        
+                        }
+                        break;
+                    case 2:
+                        if(isNaN(row[detail.FieldName])){
+                            rowError += ' * Invalid data in field :' + detail.FieldName + ' ';
+                        }
+                        break;
+                    default:
+                        break;
+                }            
+
+            }
+
+            row['Error'] = rowError;
+        }
+
+        console.log($scope.csvData)
+
+    };
+
 });
 
 

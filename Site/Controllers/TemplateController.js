@@ -77,7 +77,7 @@ $scope.Save = function () {
       { field: 'FieldType', displayName: 'Data Type', enableCellEditOnFocus: true, editableCellTemplate: $scope.cellSelectEditableTemplateD, cellFilter:'dtFltr'},
       { field: 'FieldSize', displayName: 'Size', enableCellEdit: true, editableCellTemplate: $scope.cellNumberInputEditableTemplate },
       { field: 'FieldValidations', displayName: 'Special Validations', enableCellEdit: true, editableCellTemplate: $scope.cellInputEditableTemplate, width: 190  },
-      { field: '', enableCellEdit: false, cellTemplate: '<button ng-click="AddValidationList(row)">List</button>' },
+      { field: '', displayName:'Validation List', enableCellEdit: false, cellTemplate: '<button ng-click="AddValidationList(row)">List</button>' },
       { field: 'Nullable', displayName: 'Is Nullable', editableCellTemplate: $scope.cellSelectEditableTemplateB, cellFilter: 'boolFltr' }
     ]};
 

@@ -36,6 +36,8 @@
             gridOptionsInfo.columnDefs.push(objColDef);
         }
 
+        gridOptionsInfo.columnDefs.push({ field: 'Error' , displayName: 'Result' , width: '*',cellTemplate:'<div class="ngCellText" ng-class="col.colIndex()"><span ng-cell-text>{{row.getProperty(col.field)}}</span></div>'});
+
         return gridOptionsInfo;
     };
 
