@@ -21,23 +21,150 @@
 
 <html>
 <head>
-  <title>Google+ JavaScript Quickstart</title>
-  <script src="https://apis.google.com/js/client:platform.js" async defer></script>
-  <!-- JavaScript specific to this application that is not related to API
+    <title>Sign in</title>
+    <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+    <!-- JavaScript specific to this application that is not related to API
      calls -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></script>
+
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel='stylesheet prefetch' href='../Content/bootstrap-3.2.0.min.css'>
+
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-56181406-1', 'auto');
+        ga('send', 'pageview');
+    </script> 
 </head>
 <body>
-  <div id="gConnect">
-    <button class="g-signin"
-        data-scope="https://www.googleapis.com/auth/plus.login"
-        data-requestvisibleactions="http://schemas.google.com/AddActivity"
-        data-clientId="79518361635-1flo27fno9iaq4b5epkqg3i8moeaah3b.apps.googleusercontent.com"
-        data-callback="onSignInCallback"
-        data-theme="dark"
-        data-cookiepolicy="single_host_origin">
-    </button>
-  </div>
+    <div ng-app="login_App" ng-controller="LoginController">
+        <div class="container">
+            <!-- =================================================================== -->
+            <!-- FORM ============================================================== -->
+            <!-- =================================================================== -->
+            <form class="form-signin" name="userForm" ng-submit="submitForm()" novalidate>
+                <!-- NAME
+                <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" ng-model="user.name" required>
+                    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+                </div>-->
+                <!-- USERNAME -->
+                <div class="container" style="width: 300px; align-content: center; padding: 10px 10px 10px 10px; border: groove; ">
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+                        <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+                        <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+                    </div>
+                    <!-- EMAIL -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" ng-model="user.email">
+                        <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="userForm.$invalid">Sign in</button>
+                </div>
+
+            </form>
+            <!--
+            <div class="col-sm-6">
+              <!-- =================================================================== -->
+            <!-- VALIDATION TABLES ================================================= -->
+            <!-- =================================================================== -->
+            <!--
+                <div class="row">
+                    <div class="col-xs-3">
+                        <h3>Form</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td ng-class="{ success: userForm.$valid, danger: userForm.$invalid }">Valid</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.$pristine, danger: !userForm.$pristine }">Pristine</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.$dirty }">Dirty</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-3">
+                        <h3>Name</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td ng-class="{ success: userForm.name.$valid, danger: userForm.name.$invalid }">Valid</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.name.$pristine, danger: !userForm.name.$pristine }">Pristine</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.name.$dirty }">Dirty</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-3">
+                        <h3>Username</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td ng-class="{ success: userForm.username.$valid, danger: userForm.username.$invalid }">Valid</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.username.$pristine, danger: !userForm.username.$pristine }">Pristine</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.username.$dirty }">Dirty</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-3">
+                        <h3>Email</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td ng-class="{ success: userForm.email.$valid, danger: userForm.email.$invalid }">Valid</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.email.$pristine, danger: !userForm.email.$pristine }">Pristine</td>
+                                </tr>
+                                <tr>
+                                    <td ng-class="{ success: userForm.email.$dirty }">Dirty</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+                -->
+        </div>
+    </div>
+    <script src='../Scripts/jquery-1.11.1.js'></script>
+    <script src='../Scripts//angular.js'></script>
+    <script src="js/LoginController.js"></script>
+    <div id="gConnect" style="position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%)">
+        <button class="g-signin"
+                data-scope="https://www.googleapis.com/auth/plus.login"
+                data-requestvisibleactions="http://schemas.google.com/AddActivity"
+                data-clientid="79518361635-1flo27fno9iaq4b5epkqg3i8moeaah3b.apps.googleusercontent.com"
+                data-callback="onSignInCallback"
+                data-theme="dark"
+                data-cookiepolicy="single_host_origin"></button>
+    </div>
   <div id="authOps" style="display:none">
     <h2>User is now signed in to the app using Google+</h2>
     <p>If the user chooses to disconnect, the app must delete all stored
@@ -194,6 +321,10 @@ function onSignInCallback(authResult) {
 }
 </script>
 </html>
-<!-- http://andreareginato.github.io/oauth-ng/#introduction
+<!--
+    https://console.developers.google.com
+
+
+     http://andreareginato.github.io/oauth-ng/#introduction
 https://github.com/andreareginato/oauth-ng/tree/master/app
 -->
